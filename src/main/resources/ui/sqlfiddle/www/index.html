@@ -64,11 +64,19 @@
 
                     <ul class="nav pull-right">
                         <li>
-							<!-- Old Paypal Link -->
+							<!-- <form name="counter"><input type="text" size="8" name="d2"></form> -->
                         </li>
-                        <li
-						<!-- Old Paypal Link -->
-
+                        <li>
+							<div id='timer'>
+								<script type="application/javascript">
+										var myCountdownTest = new Countdown({
+																	time: 60, 
+																	width:200, 
+																	height:80, 
+																	rangeHi:"minute"
+																	});
+								</script>
+							</div>
                         </li>
 
                         <li class="optional">
@@ -263,6 +271,32 @@
 
     <div id="loginModal" class="modal"></div>
 
+
+<script> 
+<!-- 
+// 
+ var milisec=0 
+ var seconds=30 
+ document.counter.d2.value='30' 
+
+function display(){ 
+ if (milisec<=0){ 
+    milisec=9 
+    seconds-=1 
+ } 
+ if (seconds<=-1){ 
+    milisec=0 
+    seconds+=1 
+ } 
+ else 
+    milisec-=1 
+    document.counter.d2.value=seconds+"."+milisec 
+    setTimeout("display()",100) 
+} 
+display() 
+--> 
+</script>
     <script type="text/javascript" src="javascript/main_min.js"></script>
+	<script type="text/javascript" src="javascript/countdown.js"></script>
   </body>
 </html>

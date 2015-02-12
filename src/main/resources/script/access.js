@@ -122,7 +122,7 @@ var httpAccessConfig =
 
 function userNotExpired() {
 
-  var user = openidm.read(content.security.authenticationId.component + "/" + content.security.authenticationId.id);
+  var user = openidm.read(context.security.authenticationId.component + "/" + context.security.authenticationId.id);
 
   if ( parseInt(user.dt_ended_access) <= parseInt((new Date()).getTime()) ) {
     return false;

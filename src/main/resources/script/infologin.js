@@ -28,7 +28,7 @@
 
     // Get the current session's user information
     if (request.method === "read") {
-        user = openidm.read(content.security.authenticationId.component + "/" + content.security.authenticationId.id);
+        user = openidm.read(context.security.authenticationId.component + "/" + context.security.authenticationId.id);
 
         return _.extend({
                     dt_started_access: user.dt_started_access,

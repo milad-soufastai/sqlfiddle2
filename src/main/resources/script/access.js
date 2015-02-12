@@ -52,48 +52,39 @@ var httpAccessConfig =
            "methods"    : "read",
            "actions"    : "*"
         },
-		{  
+        {
             "pattern"    : "config/ui/themeconfig",
             "roles"      : "*",
             "methods"    : "read",
             "actions"    : "*"
-         },
+        },
         {
            "pattern"    : "system/fiddles/db_types",
            "roles"      : "*",
            "methods"    : "query",
            "actions"    : "*"
         },
-		{
-           "pattern"    : "system/fiddles/users",
-           "roles"      : "*",
-           "methods"    : "query",
-           "actions"    : "*"
-        },
         {
+           "customAuthz" : "userNotExpired()",
            "pattern"    : "endpoint/loadContent/*",
-           "roles"      : "*",
+           "roles"      : "openidm-authorized",
            "methods"    : "read",
            "actions"    : "*"
         },
         {
+           "customAuthz" : "userNotExpired()",
            "pattern"    : "endpoint/createSchema",
-           "roles"      : "*",
+           "roles"      : "openidm-authorized",
            "methods"    : "create",
            "actions"    : "*"
         },
         {
+           "customAuthz" : "userNotExpired()",
            "pattern"    : "endpoint/executeQuery",
-           "roles"      : "*",
+           "roles"      : "openidm-authorized",
            "methods"    : "action",
            "actions"    : "query"
         },
-		{  
-            "pattern"    : "endpoint/mappingDetails",
-            "roles"      : "*",
-            "methods"    : "read",
-            "actions"    : "*"
-         },
         {
            "pattern"    : "endpoint/oidc",
            "roles"      : "*",
@@ -128,3 +119,15 @@ var httpAccessConfig =
 };
 
 // Additional custom authorization functions go here
+
+function userNotExpired() {
+
+  var user = openidm.read(content.security.authenticationId.component + "/" + content.security.authenticationId.id);
+
+  if ( parseInt(user.dt_ended_access) <= parseInt((new Date()).getTime()) ) {
+    return false;
+  }
+
+  return true;
+
+}

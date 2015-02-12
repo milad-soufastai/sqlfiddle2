@@ -86,6 +86,14 @@
                     "nativeName" : "dt_started_access",
                     "nativeType" : "string"
                 },
+				"dt_ended_access" : {
+                    "type" : "string",
+                    "nativeName" : "dt_ended_access",
+                    "nativeType" : "string",
+					"flags" : [
+                        "NOT_CREATABLE",
+                        "NOT_UPDATEABLE"
+                },
                 "fiddles" : {
                     "type": "array",
                     "nativeName" : "fiddles",

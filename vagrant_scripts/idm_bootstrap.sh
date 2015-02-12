@@ -8,7 +8,7 @@ echo "192.168.50.4 SQLFIDDLE_HOST" >> /etc/hosts
 echo "192.168.50.4 POSTGRESQL93_HOST" >> /etc/hosts
 echo "192.168.50.5 MYSQL56_HOST" >> /etc/hosts
 echo "192.168.50.6 ORACLE11G_HOST" >> /etc/hosts
-echo "192.168.50.6 SQLSERVER2014_HOST" >> /etc/hosts
+echo "10.0.2.2 SQLSERVER2014_HOST" >> /etc/hosts
 
 apt-get --yes update
 apt-get --yes upgrade
@@ -16,7 +16,7 @@ apt-get --yes upgrade
 apt-get --yes --force-yes install openjdk-7-jdk maven npm varnish
 ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g grunt-cli
-
+npm install sequelize
 cd ~
 wget -q http://dl.dropbox.com/u/2590603/bnd/biz.aQute.bnd.jar
 

@@ -52,6 +52,12 @@ var httpAccessConfig =
            "methods"    : "read",
            "actions"    : "*"
         },
+		{  
+            "pattern"    : "config/ui/themeconfig",
+            "roles"      : "*",
+            "methods"    : "read",
+            "actions"    : "*"
+         },
         {
            "pattern"    : "system/fiddles/db_types",
            "roles"      : "*",

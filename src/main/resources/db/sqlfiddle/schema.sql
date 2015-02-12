@@ -251,7 +251,9 @@ CREATE TABLE users (
     id integer NOT NULL,
     issuer character varying(1000) NOT NULL,
     subject character varying(1000) NOT NULL,
-    email character varying(1000)
+    email character varying(1000),
+	dt_started_access timestamp,
+	dt_ended_access timestamp
 );
 
 
@@ -468,6 +470,32 @@ ALTER TABLE ONLY queries
 
 ALTER TABLE ONLY user_fiddles
     ADD CONSTRAINT schema_def_ref FOREIGN KEY (schema_def_id) REFERENCES schema_defs(id);
+
+--
+-- Name: schema_def_ref; Type:FUNCTION; Schema: public; Owner: postgres
+--
+CREATE OR REPLACE FUNCTION update_end_date(start_date timestamp) RETURNS timestamp
+ AS  $$ SELECT $1 + '30 Minutes'::interval $$
+ LANGUAGE SQL
+ RETURNS NULL ON NULL INPUT;	
+
+--
+-- Name: schema_def_ref; Type:FUNCTION; Schema: public; Owner: postgres
+--
+CREATE OR REPLACE FUNCTION update_end()RETURNS trigger as $$
+BEGIN
+UPDATE users SET dt_ended_access=update_end_date(dt_started_access);
+RETURN NULL;
+END;
+$$ LANGUAGE plpgsql; 
+
+	--
+-- Name: schema_def_ref; Type:Trigger; Schema: public; Owner: postgres
+--	
+CREATE TRIGGER add_end_date
+AFTER INSERT ON users
+FOR EACH ROW
+EXECUTE PROCEDURE update_end();
 
 
 --

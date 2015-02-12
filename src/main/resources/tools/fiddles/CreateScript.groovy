@@ -47,14 +47,16 @@ switch ( objectClass.objectClassValue ) {
             (
                 issuer,
                 subject,
-                email
+                email,
+				dt_started_access
             ) 
-            VALUES (?,?,?)
+            VALUES (?,?,?,?)
             """,
             [
                 createAttributes.findString("issuer"),
                 id,
-                createAttributes.findString("email")
+                createAttributes.findString("email"),
+				new java.sql.Timestamp(Calendar.getInstance().getTime().getTime())
             ])
 
         return new Uid(createAttributes.findString("issuer") + ":" + id)

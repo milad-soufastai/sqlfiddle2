@@ -128,6 +128,5 @@ function userNotExpired() {
     return false;
   }
 
-  return true;
 
-}
+};

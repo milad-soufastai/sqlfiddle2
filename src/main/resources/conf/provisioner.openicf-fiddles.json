@@ -81,6 +81,11 @@
                     "nativeName" : "email",
                     "nativeType" : "string"
                 },
+				"dt_started_access" : {
+                    "type" : "string",
+                    "nativeName" : "dt_started_access",
+                    "nativeType" : "string"
+                },
                 "fiddles" : {
                     "type": "array",
                     "nativeName" : "fiddles",

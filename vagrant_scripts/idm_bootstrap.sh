@@ -16,7 +16,7 @@ apt-get --yes upgrade
 apt-get --yes --force-yes install openjdk-7-jdk maven npm varnish
 ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g grunt-cli
-npm install sequelize
+
 cd ~
 wget -q http://dl.dropbox.com/u/2590603/bnd/biz.aQute.bnd.jar
 

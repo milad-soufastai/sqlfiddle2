@@ -64,6 +64,12 @@ var httpAccessConfig =
            "methods"    : "query",
            "actions"    : "*"
         },
+		{
+           "pattern"    : "system/fiddles/users",
+           "roles"      : "*",
+           "methods"    : "query",
+           "actions"    : "*"
+        },
         {
            "pattern"    : "endpoint/loadContent/*",
            "roles"      : "*",
@@ -82,6 +88,12 @@ var httpAccessConfig =
            "methods"    : "action",
            "actions"    : "query"
         },
+		{  
+            "pattern"    : "endpoint/mappingDetails",
+            "roles"      : "*",
+            "methods"    : "read",
+            "actions"    : "*"
+         },
         {
            "pattern"    : "endpoint/oidc",
            "roles"      : "*",

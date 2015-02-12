@@ -174,7 +174,9 @@ switch ( objectClass.objectClassValue ) {
             u.id,
             u.issuer,
             u.subject,
-            u.email
+            u.email,
+			u.dt_started_access,
+			u.dt_ended_access
         FROM
             users u
         ${where}
@@ -185,6 +187,8 @@ switch ( objectClass.objectClassValue ) {
             attribute 'issuer', row.issuer
             attribute 'subject', row.subject
             attribute 'email', row.email
+			attribute 'dt_started_access', row.dt_started_access.toString()
+			attribute 'dt_ended_access', row.dt_ended_access.toString()
         }
 
     }

@@ -93,6 +93,7 @@
 					"flags" : [
                         "NOT_CREATABLE",
                         "NOT_UPDATEABLE"
+						]
                 },
                 "fiddles" : {
                     "type": "array",

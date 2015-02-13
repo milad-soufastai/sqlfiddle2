@@ -84,6 +84,71 @@
                     "action" : "DELETE"
                 }
             ]
+        },
+		{
+            "name" : "systemHrdb_managedUser",
+            "source" : "system/fiddles/users",
+            "target" : "managed/user",
+            "properties" : [
+                {
+                    "source" : "_id",
+                    "target" : "_id"
+                },
+                {
+                    "source" : "issuer",
+                    "target" : "issuer"
+                },
+                {
+                    "source" : "subject",
+                    "target" : "subject"
+                },
+                {
+                    "source" : "email",
+                    "target" : "email"
+                },
+                {
+                    "source" : "dt_started_access",
+                    "target" : "dt_started_access"
+                },
+                {
+                    "source" : "dt_ended_access",
+                    "target" : "dt_ended_access"
+                }
+            ],
+            "policies" : [
+                {
+                    "situation" : "CONFIRMED",
+                    "action" : "UPDATE"
+                },
+                {
+                    "situation" : "FOUND",
+                    "action" : "UPDATE"
+                },
+                {
+                    "situation" : "ABSENT",
+                    "action" : "CREATE"
+                },
+                {
+                    "situation" : "AMBIGUOUS",
+                    "action" : "EXCEPTION"
+                },
+                {
+                    "situation" : "MISSING",
+                    "action" : "UNLINK"
+                },
+                {
+                    "situation" : "SOURCE_MISSING",
+                    "action" : "DELETE"
+                },
+                {
+                    "situation" : "UNQUALIFIED",
+                    "action" : "IGNORE"
+                },
+                {
+                    "situation" : "UNASSIGNED",
+                    "action" : "IGNORE"
+                }
+            ]
         }
     ]
 }

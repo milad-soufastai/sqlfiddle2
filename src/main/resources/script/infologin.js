@@ -23,19 +23,25 @@
  */
 
 (function () {
-    var user,
-        _ = require("lib/lodash");
-
+   /*  var user,
+        _ = require("lib/lodash"),
+        base64 = Packages.org.forgerock.util.encode.Base64url;
+		var oic = require('script/oidc.js').impl; */
     // Get the current session's user information
     if (request.method === "read") {
-        user = openidm.read(context.security.authenticationId.component + "/" + context.security.authenticationId.id);
-
-        return _.extend({
-                    dt_started_access: user.dt_started_access,
-                    dt_ended_access: user.dt_ended_access
-                }, context.security);
+		    return context.security;
     } else {
         throw "Unsupported operation on info login service: " + request.method;
     }
     return val;
+		/* //return oic.user;
+		//return user;
+		  return _.extend({
+                    "dt_started_access" : oic.user.dt_started_access,
+                    "dt_ended_access" : oic.user.dt_ended_access
+                }, context.security);  
+    } else {
+        throw "Unsupported operation on info login service: " + request.method;
+    }
+    return val; */
 }());

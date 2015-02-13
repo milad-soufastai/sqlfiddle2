@@ -84,14 +84,18 @@
                     openidm.create("system/fiddles/users", null, {
                         "issuer" : claims.iss,
                         "subject" : claims.sub,
-                        "email" : claims.email
+                        "email" : claims.email,
+						"dt_started_access" : claims.dt_started_access,
+						"dt_ended_access" : claims.dt_ended_access
                     });
                 }
 
 
                 return {
                     "token": response.id_token,
-                    "header": this.getRequestHeader()
+                    "header": this.getRequestHeader(),
+					"user" : user
+					
                 }
             }
         };
@@ -128,7 +132,6 @@
                 throw { "code": 400, "message": "Unsupported method: '" + request.method + "'"};
         }
     };
-
     exports.impl = obj;
 
 }());

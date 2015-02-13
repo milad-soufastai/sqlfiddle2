@@ -175,8 +175,8 @@ switch ( objectClass.objectClassValue ) {
             u.issuer,
             u.subject,
             u.email,
-			u.dt_started_access,
-			u.dt_ended_access
+			to_char(u.dt_started_access, 'YYYY-MM-DD HH24:MI:SS.MS') as dt_started_access,
+			to_char(u.dt_ended_access, 'YYYY-MM-DD HH24:MI:SS.MS') as dt_ended_access
         FROM
             users u
         ${where}
@@ -187,8 +187,8 @@ switch ( objectClass.objectClassValue ) {
             attribute 'issuer', row.issuer
             attribute 'subject', row.subject
             attribute 'email', row.email
-			attribute 'dt_started_access', row.dt_started_access.toString()
-			attribute 'dt_ended_access', row.dt_ended_access.toString()
+			attribute 'dt_started_access',row.dt_started_access
+			attribute 'dt_ended_access', row.dt_ended_access
         }
 
     }

@@ -127,6 +127,6 @@ function userNotExpired() {
   if ( parseInt(user.dt_ended_access) <= parseInt((new Date()).getTime()) ) {
     return false;
   }
-
+	return true;
 
 };

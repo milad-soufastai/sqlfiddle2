@@ -7,13 +7,15 @@ See [the SQL Fiddle about page](http://sqlfiddle.com/about.html) page for backgr
 
 ## Getting the project up and running
 
-Fork the code on github to a local branch for youself.  
+Fork the code on github to a local branch for youself.
 
-You are going to need [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) installed locally to get SQL Fiddle running. Once you have both of these installed, and this project cloned locally, run this command from the root of your working copy:
+You are going to need [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) installed locally to get SQL Fiddle running. For VirtualBox, you will need to add a Host-only network for 10.0.0.0/24. Once you those installed and configured, and this project cloned locally, run this command from the root of your working copy:
 
     vagrant up
 
-This will take a while to download the base image and all of the many dependencies. Once it has finished, you will have the software running in a set of VMs. You can now access your local server at [localhost:18080/sqlfiddle](http://localhost:18080/sqlfiddle).
+This will take a while to download the base image and all of the many dependencies. Once it has finished, you will have the software running in a set of VMs. You can now access your local server at [localhost:6081](http://localhost:6081/).
+
+Note for Windows users - be sure that you run "vagrant up" as an administrator.
 
 You should now have a functional copy of SQL Fiddle running locally.
 

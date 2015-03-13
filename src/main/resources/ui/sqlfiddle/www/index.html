@@ -45,11 +45,16 @@
 
                         <li class="divider-vertical"></li>
 
+<<<<<<< HEAD
                         <li class="">
                             <a id="sample" href="#viewSample"><i class="icon-list-alt"></i>Return Default Schema</a>
+=======
+                        <li>
+                            <a id="sample" href="#viewSample"><i class="icon-list-alt"></i>View Sample Fiddle</a>
+>>>>>>> jakefeasel-master
                         </li>
 
-                        <li class="">
+                        <li>
                             <a id="clear" href="#clear"><i class="icon-refresh"></i>Clear</a>
                         </li>
 
@@ -57,8 +62,15 @@
                            <!-- <a href="#textToDDLModal" data-toggle="modal"><i class="icon-wrench"></i>Text to DDL</a> -->
                         </li>
 
-                        <li class="dropdown" id="userInfo">
+                        <li class="dropdown" id="userOptions">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <b class="caret"></b>
+                                <i class="icon-tasks"></i>User Options
+                            </a>
+                            <ul class="dropdown-menu">
+                            </ul>
                         </li>
+
 
                     </ul>
 
@@ -240,6 +252,22 @@
 
     </div><!-- end container-fluid -->
 
+<<<<<<< HEAD
+=======
+    <div id="hosting">
+        <ul id="hostingPartners">
+            <li id="sqlsentry"><a href="http://www.sqlsentry.net/download-trial/landing/complete.asp?ad=201208-sqlfiddle" target="_new"><script>
+function getRandomArbitrary(min, max) {
+  return parseInt(Math.random() * (max - min) + min);
+}
+document.write('<img src="images/sqlsentry/0' + parseInt(getRandomArbitrary(0,5)) + '.jpg" alt="SQL Sentry">');
+</script></a></li>
+
+            <li id="csi"><a href="http://www.collectserver.info/" target="_new"><img src="images/collectserver_info.png" alt="CollectServer.info - Easy Server Health Monitoring"></a></li>
+        </ul>
+    </div>
+
+>>>>>>> jakefeasel-master
     <div id="textToDDLModal" class="modal">
         <div class="modal-header">
             <a class="close" data-dismiss="modal">x</a>
@@ -267,7 +295,23 @@
 
     </div>
 
-    <div id="myFiddlesModal" class="modal"></div>
+    <div id="myFiddlesModal" class="modal">
+
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">x</a>
+            <ul class="nav nav-tabs" id="myFiddlesTabs">
+                <li class="active"><a href="#fiddle_history" data-toggle="tab">Fiddle History (this session)</a></li>
+                <li id="favorites_tab"><a href="#favorites" data-toggle="tab">Favorites <i class="icon-star"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="fiddle_history">
+            </div>
+            <div class="tab-pane" id="favorites">
+            </div>
+        </div>
+    </div>
 
     <div id="loginModal" class="modal"></div>
 

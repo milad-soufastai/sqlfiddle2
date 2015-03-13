@@ -185,6 +185,34 @@
                     "required" : false,
                     "nativeName" : "batch_separator",
                     "nativeType" : "string"
+                },
+                "execution_plan_prefix" : {
+                    "type" : "string",
+                    "required" : false,
+                    "nativeName" : "execution_plan_prefix",
+                    "nativeType" : "string"
+                },
+                "execution_plan_suffix" : {
+                    "type" : "string",
+                    "required" : false,
+                    "nativeName" : "execution_plan_suffix",
+                    "nativeType" : "string"
+                },
+                "execution_plan_xslt" : {
+                    "type" : "string",
+                    "required" : false,
+                    "nativeName" : "execution_plan_xslt",
+                    "nativeType" : "string"
+                },
+                "num_hosts" : {
+                    "type" : "integer",
+                    "required" : false,
+                    "nativeName" : "num_hosts",
+                    "nativeType" : "integer",
+                    "flags" : [
+                        "NOT_CREATABLE",
+                        "NOT_UPDATEABLE"
+                    ]
                 }
             }
         },
@@ -313,15 +341,6 @@
                         },
                         "context" : {
                             "type" : "string" 
-                        },
-                        "execution_plan_prefix" : {
-                            "type" : "string"
-                        },
-                        "execution_plan_suffix" : {
-                            "type" : "string"
-                        },
-                        "execution_plan_xslt" : {
-                            "type" : "string"
                         },
                         "simple_name" : {
                             "type" : "string"

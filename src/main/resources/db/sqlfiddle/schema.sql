@@ -250,7 +250,7 @@ ALTER SEQUENCE user_fiddles_id_seq OWNED BY user_fiddles.id;
 CREATE TABLE users (
     id integer NOT NULL,
     issuer character varying(1000) NOT NULL,
-    subject character varying(1000) NOT NULL,
+    subject character varying(1000),
     email character varying(1000)
 );
 
@@ -429,6 +429,8 @@ CREATE INDEX user_fiddles_user_schema_query_id ON user_fiddles USING btree (user
 
 CREATE UNIQUE INDEX user_identities ON users USING btree (issuer,subject);
 
+CREATE UNIQUE INDEX user_email ON users USING btree (email);
+
 
 --
 -- Name: db_type_ref; Type: FK CONSTRAINT; Schema: public; Owner: postgres
@@ -450,8 +452,8 @@ ALTER TABLE ONLY schema_defs
 -- Name: host_ref; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY schema_defs
-    ADD CONSTRAINT host_ref FOREIGN KEY (current_host_id) REFERENCES hosts(id);
+--ALTER TABLE ONLY schema_defs
+--    ADD CONSTRAINT host_ref FOREIGN KEY (current_host_id) REFERENCES hosts(id);
 
 
 --

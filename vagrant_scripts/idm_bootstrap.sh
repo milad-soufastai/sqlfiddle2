@@ -1,19 +1,21 @@
 #!/bin/bash
 
-export OPENIDM_OPTS="-Xms128m -Xmx256m"
+export OPENIDM_OPTS="-Xms512m -Xmx768m"
 echo "export OPENIDM_OPTS=\"${OPENIDM_OPTS}\"" >> /etc/profile
-
-echo "192.168.50.4 OPENIDM_REPO_HOST" >> /etc/hosts
-echo "192.168.50.4 SQLFIDDLE_HOST" >> /etc/hosts
-echo "192.168.50.4 POSTGRESQL93_HOST" >> /etc/hosts
-echo "192.168.50.5 MYSQL56_HOST" >> /etc/hosts
-echo "192.168.50.6 ORACLE11G_HOST" >> /etc/hosts
-echo "192.168.50.6 SQLSERVER2014_HOST" >> /etc/hosts
 
 apt-get --yes update
 apt-get --yes upgrade
 
-apt-get --yes --force-yes install openjdk-7-jdk maven npm varnish
+echo "10.0.0.16 OPENIDM_REPO_HOST" >> /etc/hosts
+echo "10.0.0.16 SQLFIDDLE_HOST" >> /etc/hosts
+echo "10.0.0.16 POSTGRESQL93_HOST" >> /etc/hosts
+echo "10.0.0.15 MYSQL56_HOST" >> /etc/hosts
+echo "10.0.0.17 ORACLE11G_HOST" >> /etc/hosts
+echo "10.0.0.17 SQLSERVER2014_HOST" >> /etc/hosts
+
+apt-get --yes --force-yes install openjdk-7-jdk maven npm varnish s3cmd
+cp /vagrant/src/main/resources/varnish/default.vcl /etc/varnish
+cp /vagrant/src/main/resources/varnish/default_varnish /etc/default/varnish
 ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g grunt-cli
 

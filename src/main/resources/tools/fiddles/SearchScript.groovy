@@ -206,9 +206,6 @@ switch ( objectClass.objectClassValue ) {
             d.simple_name,
             d.full_name,
             d.context,
-            d.execution_plan_prefix,
-            d.execution_plan_suffix,
-            d.execution_plan_xslt,
             d.batch_separator
         FROM 
             schema_defs s 
@@ -235,9 +232,6 @@ switch ( objectClass.objectClassValue ) {
                     context : row.context,
                     simple_name : row.simple_name,
                     full_name : row.full_name,
-                    execution_plan_prefix : row.execution_plan_prefix,
-                    execution_plan_suffix : row.execution_plan_suffix,
-                    execution_plan_xslt : row.execution_plan_xslt,
                     batch_separator : row.batch_separator
                 ]
             attribute 'structure', structure
@@ -343,12 +337,31 @@ switch ( objectClass.objectClassValue ) {
             d.simple_name,
             d.jdbc_class_name,
             d.sample_fragment,
-            d.batch_separator
+            d.batch_separator,
+            d.execution_plan_prefix,
+            d.execution_plan_suffix,
+            d.execution_plan_xslt,
+            count(h.id) as num_hosts
         FROM
             db_types d
+                LEFT OUTER JOIN hosts h ON
+                    d.id = h.db_type_id
         ${where}
+        GROUP BY
+            d.id,
+            d.context,
+            d.full_name,
+            d.simple_name,
+            d.jdbc_class_name,
+            d.sample_fragment,
+            d.batch_separator,
+            d.execution_plan_prefix,
+            d.execution_plan_suffix,
+            d.execution_plan_xslt
         ORDER BY
-            d.full_name
+            d.simple_name,
+            d.is_latest_stable desc,
+            d.full_name desc
     """, whereParams) { row ->
         handler {
             id row.full_name
@@ -358,6 +371,10 @@ switch ( objectClass.objectClassValue ) {
             attribute 'className', row.jdbc_class_name
             attribute 'sample_fragment', row.sample_fragment
             attribute 'batch_separator', row.batch_separator
+            attribute 'execution_plan_prefix', row.execution_plan_prefix
+            attribute 'execution_plan_suffix', row.execution_plan_suffix
+            attribute 'execution_plan_xslt', row.execution_plan_xslt
+            attribute 'num_hosts', row.num_hosts
         }
 
     }

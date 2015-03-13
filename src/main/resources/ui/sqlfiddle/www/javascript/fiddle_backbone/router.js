@@ -21,6 +21,7 @@ define([
             DBType: function (db_type_id) {
                 // update currently-selected dbtype
                 dbTypes.setSelectedType(parseInt(db_type_id), true);
+                schemaDef.set({"dbType": dbTypes.getSelectedType()});
                 dbTypesListView.render();
             },
 
@@ -204,7 +205,19 @@ define([
 
                             if (resp["sql"]) {
                                 myFiddleHistory.insert(new UsedFiddle({
-                                    "fragment": "!" + db_type_id + "/" + resp["short_code"] + "/" + resp["id"]
+                                    "fragment": "!" + db_type_id + "/" + resp["short_code"] + "/" + resp["id"],
+                                    "full_name": resp["full_name"],
+                                    "structure": resp["schema_structure"],
+                                    "sql": resp["sql"],
+                                    "sets": _.map(resp["sets"], function (set) {
+                                        return {
+                                            "succeeded": set.SUCCEEDED,
+                                            "statement_sql": set.STATEMENT ? set.STATEMENT.substring(0,400) : "",
+                                            "row_count": set.RESULTS ? set.RESULTS.DATA.length : null,
+                                            "columns": set.RESULTS ? set.RESULTS.COLUMNS.join(", ") : null,
+                                            "error_message": set.ERRORMESSAGE
+                                        };
+                                    })
                                 }));
 
                                 query.set({
@@ -216,7 +229,9 @@ define([
                                 query.trigger("reloaded");
                             } else {
                                 myFiddleHistory.insert(new UsedFiddle({
-                                    "fragment": "!" + db_type_id + "/" + resp["short_code"]
+                                    "fragment": "!" + db_type_id + "/" + resp["short_code"],
+                                    "full_name": resp["full_name"],
+                                    "structure": resp["schema_structure"]
                                 }));
                             }
 

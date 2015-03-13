@@ -1,6 +1,34 @@
 {
-    "eventTypes" : { },
-    "logTo" : [ ],
+    "eventTypes" : {
+        "activity" : {
+            "filter" : {
+                "actions" : [
+                    "create",
+                    "update",
+                    "delete",
+                    "patch",
+                    "action",
+					"query"
+                ]
+            },
+            "watchedFields" : [ ],
+            "passwordFields" : [
+                "password"
+            ]
+        },
+        "recon" : { }
+    },
+    "logTo" : [
+        {
+            "logType" : "csv",
+            "location" : "audit",
+            "recordDelimiter" : ";"
+        },
+        {
+            "logType" : "repository",
+            "useForQueries" : true
+        }
+    ],
     "exceptionFormatter" : {
         "type" : "text/javascript",
         "file" : "bin/defaults/script/audit/stacktraceFormatter.js"
